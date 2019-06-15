@@ -33,7 +33,12 @@ class Post(object):
     def from_mongo(cls, id):
         # return a specific post from a query of post id
         post_data = Database.find_one('posts', {'id' : id})
-        return cls(blog_id=post_data["blog_id"], author=post_data["author"], content=post_data["content"], title=post_data["title"], created_date=post_data["created_date"])
+        return cls(blog_id=post_data["blog_id"],
+                   author=post_data["author"],
+                   content=post_data["content"],
+                   title=post_data["title"],
+                   created_date=post_data["created_date"],
+                   id=post_data["id"])
 
     @staticmethod
     def from_blog(id):
